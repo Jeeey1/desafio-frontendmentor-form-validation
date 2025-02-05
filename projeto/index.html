@@ -1,70 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frontend Mentor | Form</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
     rel="stylesheet">
+  <title>Form | Frontend Mentor</title>
+  <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 
 <body>
   <main class="container main">
+    <h1>Contact Us</h1>
+    <form type="submit" id="form" class="form">
 
-    <section class="form-title">
-      <h1>Contact Us</h1>
-    </section>
-
-    <form action="" id="form">
-      <section class="form-content content-username">
-        <div>
-          <label for="first-name">First Name * </label>
+      <div class="form-username">
+        <div class="username-content">
+          <label for="">First Name <span>*</span></label>
           <input type="text" id="first-name" name="first-name">
+          <p>This field is required</p>
         </div>
 
-        <div>
-          <label for="last-name">Last Name * </label>
+        <div class="username-content">
+          <label for="">Last Name <span>*</span></label>
           <input type="text" id="last-name" name="last-name">
+          <p>This field is required</p>
         </div>
-      </section>
-
-      <section class="form-content">
-        <div class="content-email">
-          <label for="email">Email Adress * </label>
-          <input type="text" id="email" name="email">
-        </div>
-      </section>
-
-      <section class="form-content">
-        <label for="query-type">Query Type * </label>
-        <div class="content-query">
-          <div>
-            <input type="radio" id="radio" value="yes" />
-            <label>General Enquiry</label>
-          </div>
-          
-          <div>
-          <input type="radio" id="radio" value="yes" />
-          <label>Suporrto Request</label>
-        </div>
-      </section>
-
-      <section class="form-content">
-        <label for="message">Messagem *</label>
-        <input type="text" name="message" id="message" class="text-area">
-      </section>
-
-      <div class="form-termo">
-        <label for="termos"><input type="checkbox" name="termos" id="termos">I consent to being contacted by the
-          team</label>
       </div>
 
-      <button class="form-button">Submit</button>
+
+      <div class="form-email">
+        <label for="email">Email Adress <span>*</span></label>
+        <input type="text" id="email" name="email">
+        <p>Please enter a valid email address</p>
+      </div>
+
+      <div class="title-query"><label for="">Query Type <span>*</span></label></div>
+      <div class="form-query">
+
+        <div class="query-content">
+          <input type="radio" name="radio" id="radio-1">
+          <img src="../assets/images/icon-radio-selected.svg" alt="" class="radio-checked">
+          <label for="radio-1">General Enquiry</label>
+        </div>
+
+        <div class="query-content">
+          <input type="radio" name="radio" id="radio-2">
+          <img src="../assets/images/icon-radio-selected.svg" alt="" class="radio-checked">
+          <label for="radio-2">Support Request</label>
+        </div>
+      </div>
+
+      <div class="form-message">
+        <label for="text-area">Message <span>*<span></label>
+        <textarea name="text-area" id="text-area"></textarea>
+        <p>This field is required</p>
+      </div>
+
+      <div class="form-term">
+        <input type="checkbox" name="term" id="term">
+        <label for="term" class="term"> I consent to being contacted by the team <span>*</span></label>
+      </div>
+
+      <button type="submit" class="form-button">Submit</button>
     </form>
   </main>
 </body>
