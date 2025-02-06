@@ -15,13 +15,15 @@ body, p, h1, h2, input, label {
 
 html, body {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 body {
   background-color: hsl(148, 38%, 91%);
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 }
 
@@ -180,17 +182,48 @@ textarea:hover{
   border-color: rgba(12, 125, 105, 1) !important;
 }
 
-div p {
+.radio.erro{
+  margin-top: 10px;
+}
+
+div p,
+.radio-msg-erro  {
   display: none;
 }
 
-div.erro p{
+div.erro p,
+.form-query.erro + p{
   margin-top: 10px;
   color: rgba(215, 60, 60, 1);
   display: block;
 }
 
 div.erro input,
-div.erro textarea {
+div.erro textarea,
+.form-query.erro div.radio  {
   border-color: rgba(215, 60, 60, 1) !important;
 }
+
+#radio1,
+#radio2 {
+  position: relative;
+}
+
+#radio1.active#radio1::before,
+#radio2.active#radio2::before{
+  content: "";
+  width: 19px;
+  height: 19px;
+  background-image: url(../assets/images/icon-radio-selected.svg);
+  position: absolute;
+  display: inline-block;
+  background-size: cover;
+  /* display: none; */
+}
+
+input.hidden-radio{
+  appearance: none;
+}
+
+
+
