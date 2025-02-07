@@ -159,6 +159,24 @@ input {
   height: 16px;
 }
 
+.form-term input{
+  position: relative;
+}
+
+.form-term input::before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/images/icon-checkbox-check.svg);
+  position: absolute;
+  border-radius: 1px;
+  visibility: hidden;
+}
+
+.form-term.visible-check input::before{
+  visibility: visible;
+}
+
 .form-button{
   width: 100%;
   padding: 15px 20px;
@@ -218,7 +236,6 @@ div.erro textarea,
   position: absolute;
   display: inline-block;
   background-size: cover;
-  /* display: none; */
 }
 
 input.hidden-radio{
