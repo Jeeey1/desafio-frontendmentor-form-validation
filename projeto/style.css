@@ -3,17 +3,23 @@
   font-family: "Karla", sans-serif;
 }
 
-body label{
+body label {
   font-size: 16px;
   color: rgba(0, 0, 0, 0.9);
 }
 
-body, p, h1, h2, input, label {
+body,
+p,
+h1,
+h2,
+input,
+label {
   margin: 0px;
   padding: 0px;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   min-height: 100vh;
   padding-top: 20px;
@@ -23,7 +29,7 @@ html, body {
 body {
   background-color: hsl(148, 38%, 91%);
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
 }
 
@@ -40,14 +46,13 @@ input {
   cursor: pointer;
 }
 
-.container{
+.container {
   background-color: #fff;
   padding: 30px;
   border-radius: 8px;
 }
 
-
-.form-username{
+.form-username {
   display: flex;
   gap: 10px;
 }
@@ -65,7 +70,7 @@ input {
   border: solid 1px rgba(43, 66, 70, 0.5);
 }
 
-.username-content{
+.username-content {
   display: flex;
   flex-direction: column;
 }
@@ -78,7 +83,7 @@ input {
 .form-email label {
   margin-top: 30px;
   margin-bottom: 10px;
-} 
+}
 
 .form-email input {
   padding: 15px 20px;
@@ -109,14 +114,13 @@ input {
   cursor: pointer;
 }
 
-.query-content:hover{
+.query-content:hover {
   border-color: rgba(12, 125, 105, 1) !important;
 }
 
 .radio-checked {
   display: none;
 }
-
 
 .query-content input {
   width: 18px;
@@ -146,7 +150,7 @@ input {
   cursor: pointer;
 }
 
-.form-term{
+.form-term {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -159,11 +163,11 @@ input {
   height: 16px;
 }
 
-.form-term input{
+.form-term input {
   position: relative;
 }
 
-.form-term input::before{
+.form-term input::before {
   content: "";
   width: 100%;
   height: 100%;
@@ -173,11 +177,11 @@ input {
   visibility: hidden;
 }
 
-.form-term.visible-check input::before{
+.form-term.visible-check input::before {
   visibility: visible;
 }
 
-.form-button{
+.form-button {
   width: 100%;
   padding: 15px 20px;
   border-radius: 8px;
@@ -196,23 +200,23 @@ input {
 input:focus,
 input:hover,
 textarea:focus,
-textarea:hover{
+textarea:hover {
   border-color: rgba(12, 125, 105, 1) !important;
 }
 
-.radio.erro{
+.radio.erro {
   margin-top: 10px;
 }
 
 div p,
 .radio-msg-erro,
-.form-term + p{
+.form-term + p {
   display: none;
 }
 
 div.erro p,
 .form-query.erro + p,
-.form-term.erro + p{
+.form-term.erro + p {
   margin-top: 10px;
   color: rgba(215, 60, 60, 1);
   display: block;
@@ -220,7 +224,7 @@ div.erro p,
 
 div.erro input,
 div.erro textarea,
-.form-query.erro div.radio  {
+.form-query.erro div.radio {
   border-color: rgba(215, 60, 60, 1) !important;
 }
 
@@ -230,7 +234,7 @@ div.erro textarea,
 }
 
 #radio1.active#radio1::before,
-#radio2.active#radio2::before{
+#radio2.active#radio2::before {
   content: "";
   width: 19px;
   height: 19px;
@@ -240,9 +244,35 @@ div.erro textarea,
   background-size: cover;
 }
 
-input.hidden-radio{
+input.hidden-radio {
   appearance: none;
 }
 
+@media (max-width: 700px) {
+  body {
+    padding: 20px;
+  }
 
+  .container {
+    max-width: 100%;
+  }
 
+  .form-username {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .form-username input {
+    width: 100%;
+  }
+
+  .form-query {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .form-query div {
+    width: 100%;
+  }
+}
