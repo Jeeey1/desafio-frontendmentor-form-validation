@@ -175,6 +175,7 @@ input {
   position: absolute;
   border-radius: 1px;
   visibility: hidden;
+  background-size: cover;
 }
 
 .form-term.visible-check input::before {
@@ -274,5 +275,12 @@ input.hidden-radio {
 
   .form-query div {
     width: 100%;
+  }
+}
+
+@media (max-width: 450px){
+  .form-term input::before {
+    width: 16px;
+    height: 16px;
   }
 }
