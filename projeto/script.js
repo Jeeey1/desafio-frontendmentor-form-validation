@@ -31,6 +31,7 @@ const firstNameInput = document.getElementById("first-name");
 const lastNameInput = document.getElementById("last-name");
 const emailInput = document.getElementById("email");
 const textAreaInput = document.getElementById("text-area");
+const checkboxInput = document.getElementById('term');
 
 const radio1 = document.getElementById("radio1");
 const radio2 = document.getElementById("radio2");
@@ -49,6 +50,7 @@ function checkInputGeneral() {
   checkInputEmail();
   checkInputTextArea();
   checkRadioButtons();
+  checkInputCheckbox();
 }
 checkedInputClick();
 
@@ -61,8 +63,7 @@ function checkInputName() {
   if (firstNameValue === "") {
     errorMsg(firstNameInput);
   } else {
-    const parentInput = firstNameInput.parentElement;
-    parentInput.classList.remove("erro");
+    removeErrorMsg(firstNameInput);
   }
 }
 
@@ -72,8 +73,7 @@ function checkInputLastName() {
   if (lastNameValue === "") {
     errorMsg(lastNameInput);
   } else {
-    const parentInput = lastNameInput.parentElement;
-    parentInput.classList.remove("erro");
+    removeErrorMsg(lastNameInput);
   }
 }
 
@@ -83,14 +83,13 @@ function checkInputEmail() {
   if (emailValue === "") {
     errorMsg(emailInput);
   } else {
-    const parentInput = emailInput.parentElement;
-    parentInput.classList.remove("erro");
+    removeErrorMsg(emailInput);
   }
 }
 
 function checkRadioButtons() {
   if (!radio1.checked && !radio2.checked) {
-    msgErroRadio();
+    errorMsgRadio();
   }
 }
 function checkedInputClick() {
@@ -110,11 +109,29 @@ function checkInputTextArea() {
   if (textAreaValue === "") {
     errorMsg(textAreaInput);
   } else {
-    const parentInput = textAreaInput.parentElement;
-    parentInput.classList.remove("erro");
+    removeErrorMsg(textAreaInput);
   }
 }
 
+function checkInputCheckbox(){
+  const checkboxValue = checkboxInput.checked;
+  if (!checkboxValue){
+    errorMsg(checkboxInput);
+  } else {
+    removeErrorMsg(checkboxInput);
+  }
+}
+
+checkboxInput.addEventListener('click', (event => {
+  const parentElement = checkboxInput.parentElement;
+  if(event.target.checked){
+    parentElement.classList.add('visible-check');
+    checkboxInput.style.visibility = 'hidden'
+  } else {
+    parentElement.classList.remove('visible-check');
+    checkboxInput.style.visibility = 'visible'
+  }
+}))
 // Métodos de erro
 
 function errorMsg(input) {
@@ -122,7 +139,12 @@ function errorMsg(input) {
   parentInput.classList.add("erro");
 }
 
-function msgErroRadio() {
+function removeErrorMsg(input){
+  const parentInput = input.parentElement;
+  parentInput.classList.remove("erro");
+}
+
+function errorMsgRadio() {
   const parentRadio = document.querySelector(".form-query");
   parentRadio.classList.add("erro");
 }

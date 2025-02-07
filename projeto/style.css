@@ -205,12 +205,14 @@ textarea:hover{
 }
 
 div p,
-.radio-msg-erro  {
+.radio-msg-erro,
+.form-term + p{
   display: none;
 }
 
 div.erro p,
-.form-query.erro + p{
+.form-query.erro + p,
+.form-term.erro + p{
   margin-top: 10px;
   color: rgba(215, 60, 60, 1);
   display: block;
