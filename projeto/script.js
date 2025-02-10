@@ -80,11 +80,22 @@ function checkInputLastName() {
 function checkInputEmail() {
   const emailValue = emailInput.value;
 
-  if (emailValue === "") {
+  if (emailValue === '' || !isEmailValid(emailValue)){
     errorMsg(emailInput);
   } else {
     removeErrorMsg(emailInput);
   }
+}
+
+// Valida o email digitado
+function isEmailValid(email) {
+  const emailRegex = new RegExp(
+    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/
+  );
+  if(emailRegex.test(email)){
+    return true;
+  }
+  return false;
 }
 
 function checkRadioButtons() {

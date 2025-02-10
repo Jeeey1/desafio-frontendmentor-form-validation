@@ -29,6 +29,7 @@ body {
 body {
   background-color: hsl(148, 38%, 91%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
