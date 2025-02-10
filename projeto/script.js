@@ -11,8 +11,6 @@ radioInput.forEach((radio) => {
         parentRadio.style.backgroundColor = "rgba(12, 125, 105, 0.3)";
         parentRadio.style.borderColor = "rgba(12, 125, 105, 1)";
       } else {
-        item.classList.remove("active");
-        item.classList.remove("hidden-radio");
         const parentRadio = item.parentElement;
         item.classList.remove("active");
         item.classList.remove("hidden-radio");
@@ -40,10 +38,33 @@ const radio2 = document.getElementById("radio2");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  checkInputGeneral();
+  checkForm();
 });
 
 // Método geral contendo todos os outros métodos de input
+function checkForm(){
+  checkInputGeneral();
+
+  const formItems = form.querySelectorAll('div[class^="form"]');
+  console.log(formItems);
+
+  const isValid = [...formItems].every((item) => {
+    return !item.classList.contains('erro');
+  })
+  console.log(isValid)
+
+  if(isValid){
+    messageSubmit();
+  }
+}
+
+function messageSubmit(){
+  const popUpMessage = document.querySelector(".success-msg");
+  popUpMessage.classList.add('success-active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+
 function checkInputGeneral() {
   checkInputName();
   checkInputLastName();
@@ -52,6 +73,9 @@ function checkInputGeneral() {
   checkRadioButtons();
   checkInputCheckbox();
 }
+
+
+// Bolinha verde do radio input
 checkedInputClick();
 
 
@@ -61,9 +85,9 @@ function checkInputName() {
   const firstNameValue = firstNameInput.value;
 
   if (firstNameValue === "") {
-    errorMsg(firstNameInput);
+    errorMsgName(firstNameInput);
   } else {
-    removeErrorMsg(firstNameInput);
+    removeErrorMsgName(firstNameInput);
   }
 }
 
@@ -71,9 +95,9 @@ function checkInputLastName() {
   const lastNameValue = lastNameInput.value;
 
   if (lastNameValue === "") {
-    errorMsg(lastNameInput);
+    errorMsgName(lastNameInput);
   } else {
-    removeErrorMsg(lastNameInput);
+    removeErrorMsgName(lastNameInput);
   }
 }
 
@@ -154,6 +178,17 @@ function removeErrorMsg(input){
   const parentInput = input.parentElement;
   parentInput.classList.remove("erro");
 }
+
+function errorMsgName(input) {
+  const parentInput = input.parentElement.parentElement;
+  parentInput.classList.add("erro");
+}
+
+function removeErrorMsgName(input){
+  const parentInput = input.parentElement.parentElement;
+  parentInput.classList.remove("erro");
+}
+
 
 function errorMsgRadio() {
   const parentRadio = document.querySelector(".form-query");

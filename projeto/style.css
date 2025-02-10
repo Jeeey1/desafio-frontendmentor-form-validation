@@ -18,20 +18,16 @@ label {
   padding: 0px;
 }
 
-html,
-body {
-  width: 100%;
-  min-height: 100vh;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
 body {
   background-color: hsl(148, 38%, 91%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 span {
@@ -197,6 +193,39 @@ input {
   cursor: pointer;
 }
 
+.success-msg.success-active {
+  display: block;
+}
+
+.success-msg {
+  background-color: rgba(43, 66, 70, 1);
+  padding: 25px;
+  height: auto;
+  border-radius: 8px;
+  color: #fff;
+  display: none;
+}
+
+.title-success {
+  display: flex;
+  gap: 10px;
+}
+
+.title-success h2 {
+  font-size: 1rem;
+}
+
+.title-sucess img {
+  width: 1rem;
+}
+
+.sucess-para {
+  display: block !important;
+  opacity: 0.7;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
 /* Estilizando hover-state, focus e pseudoelementos */
 
 input:focus,
@@ -250,7 +279,6 @@ input.hidden-radio {
   appearance: none;
 }
 
-
 /* Responsividade */
 @media (max-width: 700px) {
   body {
@@ -281,7 +309,7 @@ input.hidden-radio {
   }
 }
 
-@media (max-width: 450px){
+@media (max-width: 450px) {
   .form-term input::before {
     width: 16px;
     height: 16px;
