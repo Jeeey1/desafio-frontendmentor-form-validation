@@ -18,6 +18,10 @@ label {
   padding: 0px;
 }
 
+h1{
+  color: rgba(43, 66, 70, 1);
+}
+
 body {
   background-color: hsl(148, 38%, 91%);
   display: flex;
@@ -158,11 +162,9 @@ input {
 .form-term input {
   width: 16px;
   height: 16px;
-}
-
-.form-term input {
   position: relative;
 }
+
 
 .form-term input::before {
   content: "";
