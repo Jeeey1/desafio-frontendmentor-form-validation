@@ -29,50 +29,49 @@
         <div class="username-content">
           <label for="">First Name <span>*</span></label>
           <input type="text" id="first-name" name="first-name">
-          <p>This field is required</p>
+          <p></p>
         </div>
 
         <div class="username-content">
           <label for="">Last Name <span>*</span></label>
           <input type="text" id="last-name" name="last-name">
-          <p>This field is required</p>
+          <p></p>
         </div>
       </div>
 
 
       <div class="form-email">
         <label for="email">Email Adress <span>*</span></label>
-        <input type="text" id="email" name="email">
-        <p>Please enter a valid email address</p>
+        <input type="email" id="email" name="email">
+        <p></p>
       </div>
 
       <div class="title-query"><label for="">Query Type <span>*</span></label></div>
       <div class="form-query">
-
         <div class="query-content radio">
           <input type="radio" name="radio" id="radio1" value="radio-1">
           <label for="radio-1">General Enquiry</label>
         </div>
-
         <div class="query-content radio">
           <input type="radio" name="radio" id="radio2" value="radio-2">
           <label for="radio-2">Support Request</label>
         </div>
       </div>
-      <p class="radio-msg-erro">This field is required</p>
+      <p class="radio-msg-erro"></p>
 
 
       <div class="form-message">
         <label for="text-area">Message <span>*<span></label>
-        <textarea name="text-area" id="text-area"></textarea>
-        <p>This field is required</p>
+        <textarea name="text-area" id="text-area" minlength="12"></textarea>
+        <p></p>
       </div>
 
       <div class="form-term">
         <input type="checkbox" name="term" id="term">
         <label for="term" class="term"> I consent to being contacted by the team <span>*</span></label>
       </div>
-      <p>To submite this form, please consent to being contacted</p>
+      <p class="para-term"></p>
+
 
       <button type="submit" class="form-button">Submit</button>
     </form>

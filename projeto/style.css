@@ -189,10 +189,14 @@ input {
   border: none;
   background-color: rgba(12, 125, 105, 1);
   color: #fff;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1rem;
   margin-top: 30px;
   cursor: pointer;
+}
+
+.form-button:hover{
+  background-color: #063f36;
 }
 
 .success-msg.success-active {
@@ -237,8 +241,8 @@ textarea:hover {
   border-color: rgba(12, 125, 105, 1) !important;
 }
 
-.radio.erro {
-  margin-top: 10px;
+.hidden-radio{
+  appearance: none;
 }
 
 div p,
@@ -248,7 +252,7 @@ div p,
 }
 
 div.erro p,
-.form-query.erro + p,
+.form-query.erro + .radio-msg-erro,
 .form-term.erro + p {
   margin-top: 10px;
   color: rgba(215, 60, 60, 1);
@@ -269,17 +273,13 @@ div.erro textarea,
 #radio1.active#radio1::before,
 #radio2.active#radio2::before {
   content: "";
-  width: 19px;
-  height: 19px;
+  width: 20px;
+  height: 20px;
   background-image: url(../assets/images/icon-radio-selected.svg);
   position: absolute;
   display: inline-block;
-  background-size: cover;
 }
 
-input.hidden-radio {
-  appearance: none;
-}
 
 /* Responsividade */
 @media (max-width: 700px) {
