@@ -11,13 +11,21 @@ const radio2 = document.getElementById("radio2");
 const radioInput = document.querySelectorAll("input[type=radio]");
 const imgRadio = document.querySelector(".radio-checked");
 
+// Selecionando todos input, transformando array e tratando os dados
+const allInput = document.querySelectorAll("input");
+const arrayInput = Array.from(allInput);
+const novaArrayInput = arrayInput.filter(
+  (_, index) => index !== 3 && index !== 4
+);
+novaArrayInput.push(textAreaInput); // adiciona textarea na array
+
 // Evento submit do botão principal para executar o método geral
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   checkForm();
 });
-
-
+removeErroRadioDinamico();
+removeErroDinamico();
 
 // Método geral contendo todos os outros métodos de input
 function checkForm() {
@@ -25,13 +33,37 @@ function checkForm() {
 
   const formItems = form.querySelectorAll('div[class^="form"]');
 
+  // Verifica se os campos input estão sem erro
   const isValid = [...formItems].every((item) => {
     return !item.classList.contains("erro");
   });
 
+  // ativa a mensagem de success submit
   if (isValid) {
     messageSubmit();
   }
+}
+
+function removeErroDinamico() {
+  novaArrayInput.forEach((input) => {
+    input.addEventListener("input", (event) => {
+      const parentInput = input.parentElement;
+      parentInput.classList.remove("erro");
+    });
+  });
+}
+
+function removeErroRadioDinamico() {
+  radioInput.forEach((radio) => {
+    radio.addEventListener("click", (event) => {
+      if (radio1.checked || radio2.checked) {
+        const msgPara = document.querySelector(".radio-msg-erro");
+        const parentRadio = radioInput[0].parentElement.parentElement;
+        parentRadio.classList.remove("erro");
+        msgPara.innerText = "";
+      }
+    });
+  });
 }
 
 // Ativa mensagem de enviado dados com sucesso caso todos os inputs estejam corretos
@@ -65,33 +97,24 @@ radioInput.forEach((radio) => {
 // Verificações do Input First Name
 function checkInputName() {
   const firstNameValue = firstNameInput.value;
-
   if (firstNameValue === "") {
     errorMsg(firstNameInput, "This field is required");
-  } else {
-    removeErrorMsg(firstNameInput);
   }
 }
 
 // Verificações do Input Last Name
 function checkInputLastName() {
   const lastNameValue = lastNameInput.value;
-
   if (lastNameValue === "") {
     errorMsg(lastNameInput, "This field is required");
-  } else {
-    removeErrorMsg(lastNameInput);
   }
 }
 
 // Verificações do Input Email
 function checkInputEmail() {
   const emailValue = emailInput.value;
-
   if (emailValue === "" || !isEmailValid(emailValue)) {
     errorMsg(emailInput, "Please enter a valid email address");
-  } else {
-    removeErrorMsg(emailInput);
   }
 }
 // Valida o email digitado
@@ -104,47 +127,46 @@ function isEmailValid(email) {
   }
   return false;
 }
+
 // Verificações do Input Radio Button
 function checkRadioButtons(input, msgErro) {
   const msgPara = document.querySelector(".radio-msg-erro");
   const parentRadio = input[0].parentElement.parentElement;
   // Se um dos radio button for selecionado retorna true
   if (!radio1.checked && !radio2.checked) {
-    parentRadio.classList.add('erro')
+    parentRadio.classList.add("erro");
     msgPara.innerText = msgErro;
-  } else {
-    parentRadio.classList.remove('erro')
-    msgPara.innerText = '';
   }
 }
 
 // Verificações do Input TextArea
 function checkInputTextArea() {
   const textAreaValue = textAreaInput.value;
-
   if (textAreaValue === "") {
     errorMsg(textAreaInput, "This field is required");
-  } else {
-    removeErrorMsg(textAreaInput);
   }
 }
-
-
 
 // Verificações do Input Checkbox
 function checkInputCheckbox(input, msgErro) {
   const checkboxValue = input.checked;
   const checkboxParent = input.parentElement;
-  const msgPara = document.querySelector('.para-term')
-  
-  if(!checkboxValue){
-    checkboxParent.classList.add('erro')
+  const msgPara = document.querySelector(".para-term");
+  if (!checkboxValue) {
+    checkboxParent.classList.add("erro");
     msgPara.innerText = msgErro;
-  } else {
-    checkboxParent.classList.remove('erro')
-    msgPara.innerText = '';
   }
 }
+
+checkboxInput.addEventListener("click", (check) => {
+  const checkboxValue = checkboxInput.checked;
+  const checkboxParent = checkboxInput.parentElement;
+  const msgPara = document.querySelector(".para-term");
+  if (checkboxValue) {
+    checkboxParent.classList.remove("erro");
+    msgPara.innerText = "";
+  }
+});
 
 // Adiciona imagem de checkbox check e oculta o checkbox button padrão do navegador
 checkboxInput.addEventListener("click", (event) => {
@@ -164,12 +186,14 @@ function checkInputGeneral() {
   checkInputLastName();
   checkInputEmail();
   checkInputTextArea();
-  checkRadioButtons(radioInput, 'Please select a query type');
-  checkInputCheckbox(checkboxInput, 'To submit this form, please consent to being contacted');
+  checkRadioButtons(radioInput, "Please select a query type");
+  checkInputCheckbox(
+    checkboxInput,
+    "To submit this form, please consent to being contacted"
+  );
 }
 
-// Funções de erro
-
+// Função adiciona classe erro caso input esteja incorreto
 function errorMsg(input, msgErro) {
   const parentInput = input.parentElement;
   const errorTexto = parentInput.querySelector("p");
@@ -178,14 +202,3 @@ function errorMsg(input, msgErro) {
     parentInput.classList.add("erro");
   }
 }
-
-function removeErrorMsg(input) {
-  const parentInput = input.parentElement;
-  const errorTexto = parentInput.querySelector("p");
-  if (errorTexto) {
-    errorTexto.innerText = "";
-    parentInput.classList.remove("erro");
-  }
-}
-
-
