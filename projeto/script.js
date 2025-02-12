@@ -17,6 +17,8 @@ form.addEventListener("submit", (event) => {
   checkForm();
 });
 
+
+
 // Método geral contendo todos os outros métodos de input
 function checkForm() {
   checkInputGeneral();
